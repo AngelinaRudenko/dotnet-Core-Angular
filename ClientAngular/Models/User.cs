@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ParentApi.Models
+namespace ClientAngular
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     // according to https://json2csharp.com
@@ -21,6 +21,6 @@ namespace ParentApi.Models
         public int total { get; set; }
         public int page { get; set; }
         public int limit { get; set; }
-        public int offset { get; set; }
+
     }
 }

@@ -1,21 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
-namespace ParentApi.Controllers
+namespace ClientAngular.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class UsersController : ControllerBase
-    {
-        ///GET .../users
+    {        
         [HttpGet]
-        public async Task<string> GetAsync(int limit = 20, int page = 0)
+        public async Task<Users> Get(int limit = 20, int page = 0)
         {
-            WebRequest request = WebRequest.Create($"https://dummyapi.io/data/api/user?limit={limit}&page={page}");
+            WebRequest request = WebRequest.Create($"https://localhost:44300/api/users?limit={limit}&page={page}"); 
             request.Method = "GET";
-            request.Headers["app-id"] = "603f7a4dbe13b16adaa19d17";
 
             WebResponse response = await request.GetResponseAsync();
             string str = "";
@@ -27,7 +26,11 @@ namespace ParentApi.Controllers
                 }
             }
             response.Close();
-            return str;
+
+            //JSON deserialization
+            Users users = JsonConvert.DeserializeObject<Users>(str);
+
+            return users;       
         }
     }
 }
