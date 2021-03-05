@@ -3,7 +3,7 @@
 <p *ngIf="!users"><em>Loading...</em></p>
 
 <div>
-  <table *ngIf="users">
+  <table *ngIf="users" class="container">
     <thead>
       <tr>
         <th>First Name</th>
@@ -20,17 +20,24 @@
     </tbody>
   </table>
 
-  <div>
-    <span>per page</span>
-    <select type="number" [(ngModel)]="paginate.limit" (change)="onChangeSelect()">
-      <option *ngFor="let level of selectLimit" [ngValue]="level">{{level}}</option>
-    </select>
-    <p>page {{paginate.page}} of {{this.getLastPage()}}</p>
-    <div>
-      <button (click)="onClickFirst()"><-</button>
-      <button (click)="onClickDecrease()"><</button>
-      <button (click)="onClickIncrease()">></button>
-      <button (click)="onClickLast()">-></button>
-    </div>  
+  <div class="yellow bottom">
+    <div class="limit">
+      <p>
+       <span>per page</span>
+        <select type="number" [(ngModel)]="paginate.limit" (change)="onChangeSelect()">
+          <option *ngFor="let level of selectLimit" [ngValue]="level">{{level}}</option>
+        </select>
+      </p>
+    </div>
+   
+    <div class="page">
+      <p>page {{paginate.page}} of {{this.getLastPage()}}</p>
+      <div>
+        <button (click)="onClickFirst()"><-</button>
+        <button (click)="onClickDecrease()"><</button>
+        <button (click)="onClickIncrease()">></button>
+        <button (click)="onClickLast()">-></button>
+      </div>  
+    </div>
   </div>
 </div>

@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
   }
 
   onClickIncrease(): void {
-    let temp = (Number(this.paginate.page) + 1);
+    let temp = (+(this.paginate.page) + 1);
     if (temp < this.getLastPage()) {
       this.paginate.page = temp.toString();
       this.addSubscribe();
@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
   }
 
   onClickDecrease(): void {
-    let temp = Number(this.paginate.page) - 1;
+    let temp = +(this.paginate.page) - 1;
     if (temp > 0) {
       this.paginate.page = temp.toString();
       this.addSubscribe();

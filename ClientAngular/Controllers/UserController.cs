@@ -1,6 +1,7 @@
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using ClientAngular.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

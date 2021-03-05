@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace ClientAngular
+namespace ClientAngular.Models
 {
-    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-    // according to https://json2csharp.com
-
-    public class User
+    //Newtonsoft.Json can't deserialize Classes, which were nherited from Interfaces
+    public class User //: IUser
     {
         public string id { get; set; }
         public string lastName { get; set; }
@@ -15,12 +13,11 @@ namespace ClientAngular
         public string picture { get; set; }
     }
 
-    public class Users
+    public class Users //: IUsers
     {
         public List<User> data { get; set; }
         public int total { get; set; }
         public int page { get; set; }
         public int limit { get; set; }
-
     }
 }
